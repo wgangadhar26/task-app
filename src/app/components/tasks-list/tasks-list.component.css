@@ -10,7 +10,7 @@
 }
 .btn-add > button {
     display: flex;
-    padding: 5px;
+    padding: 5px 20px 5px 20px;
     margin: 2px;
     justify-content: flex-start;
 }

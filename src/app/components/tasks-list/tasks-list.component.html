@@ -1,9 +1,10 @@
 <div class="main-grid">
     <ag-grid-angular
         class="ag-theme-quartz"
-        style="height: 200px;overflow-y: auto;"
+        style="height: 200px;overflow-y: auto;width: 100%;"
         [rowData]="tasks.tasks"
         [columnDefs]="colDefs"
+        [autoSizeStrategy]="autoSizeStrategy"
         [rowDragManaged]="true"
         [suppressMoveWhenRowDragging]="true"
     >
@@ -11,7 +12,7 @@
 </div>
 <div class="validation-flex">
     <div class="btn-add">
-        <button mat-flat-button color="primary" [disabled]="newTask" (click)="addNewTask()">Add New Task</button>
+        <button mat-flat-button color="primary" [disabled]="newTask" (click)="addNewTask()">{{createNewTaskButtonText}}</button>
     </div>
     <div class="validation-message">
         <span *ngIf="showErrorMessage" matError>{{message}}</span>

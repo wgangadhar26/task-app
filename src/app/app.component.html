@@ -1,7 +1,6 @@
 <app-header></app-header>
-<!-- <div class="tasks">
-  <div class="task-list">
-    <app-tasks-list></app-tasks-list>
-  </div>
-</div> -->
+<h1>Welcome To Task Managemant</h1>
+<div class="body-content">
+  <button mat-flat-button *ngIf="!isNavigatedToTaskList" color="primary" (click)="navigateToTaskList()">Click here to navigate to list of Tasks</button>
+</div>
 <router-outlet></router-outlet>

@@ -86,7 +86,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
     } else if (!this.taskId) {
       const taskAlreadyExists = this.tasks.tasks.find((task: Task) => 
         task.title === this.title &&
-        task.status !== Statusses[2].key
+        task.status !== Statusses[3].key
       )
       if (taskAlreadyExists) {
         this.errorMessage = ErrorMessages.taskAlreadyExists;

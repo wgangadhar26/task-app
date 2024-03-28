@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ColDef, ITooltipParams } from 'ag-grid-community'; // Column Definition Type Interface
+import { ColDef, ITooltipParams, SizeColumnsToFitGridStrategy, SizeColumnsToFitProvidedWidthStrategy,
+  SizeColumnsToContentStrategy } from 'ag-grid-community'; // Column Definition Type Interface
 import { DeleteTasksComponent } from './delete-tasks/delete-tasks.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/task.reducer';
 import { TaskService } from '../services/task.service';
 import { TaskStatusComponent } from './task-status/task-status.component';
-import { ErrorMessages } from 'src/app/shared/constants';
+import { Constants, ErrorMessages } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-tasks-list',
@@ -19,6 +20,14 @@ export class TasksListComponent implements OnInit {
   taskToBeUpdated!: Number;
   message: string = ErrorMessages.incompleteAction;
   showErrorMessage: boolean = false;
+  public autoSizeStrategy:
+    | SizeColumnsToFitGridStrategy
+    | SizeColumnsToFitProvidedWidthStrategy
+    | SizeColumnsToContentStrategy = {
+    type: "fitGridWidth",
+    defaultMinWidth: 100,
+  };
+  createNewTaskButtonText = Constants.createNewTaskButtonText;
 
   constructor(private store: Store<AppState>, private taskService: TaskService) {
   }
@@ -29,6 +38,7 @@ export class TasksListComponent implements OnInit {
       field: "title",
       cellRenderer: EditTaskComponent,
       filter: 'agSetColumnFilter',
+      minWidth: 300,
       filterParams: {
         comparator: (a: any, b: any) => {
           const valA = parseInt(a);
@@ -45,6 +55,7 @@ export class TasksListComponent implements OnInit {
     {
       field: "description",
       filter: 'agSetColumnFilter',
+      minWidth: 350,
       filterParams: {
         comparator: (a: any, b: any) => {
           const valA = parseInt(a);
@@ -53,11 +64,12 @@ export class TasksListComponent implements OnInit {
           return valA > valB ? 1 : -1;
         }
       },
-      tooltipValueGetter: (p: ITooltipParams) => p.value
+      tooltipValueGetter: (p: ITooltipParams) => p.value // Property to get the value as tooltip
     },
     {
       field: "dueDate",
       filter: 'agSetColumnFilter',
+      minWidth: 150,
       filterParams: {
         comparator: (a: any, b: any) => {
           const valA = parseInt(a);
@@ -71,6 +83,7 @@ export class TasksListComponent implements OnInit {
     {
       field: "status",
       filter: 'agSetColumnFilter',
+      minWidth: 150,
       filterParams: {
         comparator: (a: any, b: any) => {
           const valA = parseInt(a);

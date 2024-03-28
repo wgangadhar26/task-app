@@ -7,10 +7,12 @@ export const ErrorMessages = {
 export const Statusses = [
     {key: 'notStarted', value: 'Not Started'},
     {key: 'pending', value: 'Pending'},
+    {key: 'inProgress', value: 'In Progress'},
     {key: 'completed', value: 'Completed'},
 ];
 
 export const Constants = {
     createButtonText: 'Create Task',
     updateButtonText: 'Update Task',
+    createNewTaskButtonText: 'Add New Task'
 }

@@ -17,7 +17,9 @@ export class TaskStatusComponent implements ICellRendererAngularComp {
       this.value = 'Not Started';
     } else if (params.value === 'pending') {
       this.value = 'Pending';
-    } else if (params.value === 'completed') {
+    } else if (params.value === 'inProgress') {
+      this.value = 'In Progress';
+    }  else if (params.value === 'completed') {
       this.value = 'Completed';
     } else {
       this.value = '';
