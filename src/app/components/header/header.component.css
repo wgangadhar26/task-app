@@ -1,0 +1,21 @@
+nav {
+    background-color: aquamarine;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 !important;
+    padding: 16px;
+}

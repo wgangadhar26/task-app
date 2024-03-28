@@ -1,0 +1,22 @@
+.validation-flex {
+    display: flex;
+    justify-content: flex-start;
+}
+.btn-add {
+    display: flex;
+    flex: 50%;
+    width: 100px;
+    justify-content: flex-start;
+}
+.btn-add > button {
+    display: flex;
+    padding: 5px;
+    margin: 2px;
+    justify-content: flex-start;
+}
+.validation-message {
+    display: flex;
+    flex: 50%;
+    justify-content: flex-end;
+    align-items: center;
+}

@@ -1,0 +1,40 @@
+<form class="task-form" (ngSubmit)="onSubmit()">
+    <div class="flex">
+        <h2 class="flex-row">Create a task</h2>
+        <div class="flex-row">
+            <mat-form-field appearance="fill"> 
+                <mat-label>Title</mat-label>            
+                <input matInput [(ngModel)]="title" name="title" placeholder="Placeholder" />
+            </mat-form-field>
+        </div>
+        <div class="flex-row">
+            <mat-form-field appearance="fill"> 
+                <mat-label>Description</mat-label>
+                <textarea matInput [(ngModel)]="description" name="description" placeholder="Placeholder"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="flex-row">
+            <mat-form-field appearance="fill"> 
+                <mat-label>Due Date</mat-label>
+                <input matInput type="date" [(ngModel)]="dueDate" name="dueDate" placeholder="Placeholder" />
+            </mat-form-field>
+        </div>
+        <div class="flex-row">
+            <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select [(ngModel)]="status" name="status">
+                    <mat-option *ngFor="let option of statuses" (onSelectionChange)="changeStatus($event)" [value]="option.key">{{option.value}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="flex-row">
+            <div class="btn-group">
+                <button mat-flat-button color="primary" type="submit">{{btntask}}</button>
+                <button mat-button color="primary" (click)="cancel()">Cancel</button>
+            </div>
+            <div class="validation-message">
+                <span *ngIf="!isValid" matError>{{errorMessage}}</span>
+            </div>
+        </div>
+    </div>
+</form>

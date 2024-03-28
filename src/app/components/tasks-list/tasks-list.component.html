@@ -1,0 +1,22 @@
+<div class="main-grid">
+    <ag-grid-angular
+        class="ag-theme-quartz"
+        style="height: 200px;overflow-y: auto;"
+        [rowData]="tasks.tasks"
+        [columnDefs]="colDefs"
+        [rowDragManaged]="true"
+        [suppressMoveWhenRowDragging]="true"
+    >
+    </ag-grid-angular>
+</div>
+<div class="validation-flex">
+    <div class="btn-add">
+        <button mat-flat-button color="primary" [disabled]="newTask" (click)="addNewTask()">Add New Task</button>
+    </div>
+    <div class="validation-message">
+        <span *ngIf="showErrorMessage" matError>{{message}}</span>
+    </div>
+</div>
+<div class="task-form">
+    <app-task-form *ngIf="newTask" [taskId]="taskToBeUpdated" (hideTaskForm)="newTaskCreated($event)"></app-task-form>
+</div>
